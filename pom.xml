@@ -3,8 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>se.citerus</groupId>
     <artifactId>dddsample</artifactId>
+    <packaging>pom</packaging>
     <name>DDDSample</name>
     <version>2.0-SNAPSHOT</version>
+    <modules>
+        <module>dddsample-application</module>
+        <module>dddsample-interfaces</module>
+        <module>dddsample-domain</module>
+        <module>dddsample-infrastructure</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
