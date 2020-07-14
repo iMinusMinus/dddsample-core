@@ -11,6 +11,7 @@
         <module>dddsample-interfaces</module>
         <module>dddsample-domain</module>
         <module>dddsample-infrastructure</module>
+        <module>pathfinder</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
