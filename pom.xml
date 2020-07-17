@@ -13,6 +13,7 @@
         <module>dddsample-infrastructure</module>
         <module>pathfinder</module>
         <module>aggregator-service</module>
+        <module>boot</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

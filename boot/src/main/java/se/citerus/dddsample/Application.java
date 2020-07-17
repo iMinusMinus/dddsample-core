@@ -11,6 +11,7 @@ import se.citerus.dddsample.config.DDDSampleApplicationContext;
 
 @Configuration
 @Import({DDDSampleApplicationContext.class,
+        se.citerus.dddsample.infrastructure.config.DDDSampleApplicationContext.class,
         PathfinderApplicationContext.class})
 @ImportResource({
         "classpath:context-interfaces.xml"})
