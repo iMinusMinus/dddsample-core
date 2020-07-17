@@ -1,15 +1,10 @@
 # DDDSample
-This is the new home of the original DDD Sample app hosted at SourceForge. 
+改造成maven多模块形式。
 
-Our intention is to move everything from SourceForge to GitHub in due time while starting upgrading both the technical aspects as well as the DDD aspects of the DDD Sample.
+domain模块做成各模块中心，domain模块只依赖于一些util，这些util可以单独抽成util模块，或者保留在domain中。
 
-The application uses Spring Boot. To start it go to the root directory and type `mvn spring-boot:run` or run the `main` method of the `Application` class from your IDE.  
-Then open http://localhost:8080/dddsample in your browser (and make sure, that no firewall is blocking the communication).
+domain模块的测试类原先依赖infrastructure的repository实现，那招domain不依赖原则，改成mock形式。
 
-Discussion group: https://groups.google.com/forum/#!forum/dddsample
-
-Development blog: https://citerus.github.io/dddsample-core/
-
-Trello board: https://trello.com/b/PTDFRyxd
+infrastructure模块的测试类依赖application的SampleDataGenerator，其它地方未使用，直接移到infrastructure。
 
 [![Build Status](https://travis-ci.org/citerus/dddsample-core.svg?branch=master)](https://travis-ci.org/citerus/dddsample-core)
