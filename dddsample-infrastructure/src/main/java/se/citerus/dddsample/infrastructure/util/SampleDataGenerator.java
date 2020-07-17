@@ -1,4 +1,4 @@
-package se.citerus.dddsample.application.util;
+package se.citerus.dddsample.infrastructure.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,7 +21,6 @@ import java.util.Date;
 
 import static java.util.Arrays.asList;
 import static java.util.Objects.requireNonNull;
-import static se.citerus.dddsample.application.util.DateTestUtil.toDate;
 import static se.citerus.dddsample.domain.model.location.SampleLocations.*;
 import static se.citerus.dddsample.domain.model.voyage.SampleVoyages.*;
 

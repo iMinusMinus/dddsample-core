@@ -28,12 +28,12 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.citerus.dddsample.application.util.DateTestUtil;
 import se.citerus.dddsample.domain.model.handling.HandlingEvent;
 import se.citerus.dddsample.domain.model.handling.HandlingHistory;
 import se.citerus.dddsample.domain.model.location.Location;
 import se.citerus.dddsample.domain.model.voyage.Voyage;
 import se.citerus.dddsample.domain.model.voyage.VoyageNumber;
+import se.citerus.dddsample.domain.util.DateTestUtil;
 
 public class CargoTest {
 

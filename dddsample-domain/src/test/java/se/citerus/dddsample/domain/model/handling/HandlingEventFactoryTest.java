@@ -24,8 +24,6 @@ import se.citerus.dddsample.domain.model.location.UnLocode;
 import se.citerus.dddsample.domain.model.voyage.Voyage;
 import se.citerus.dddsample.domain.model.voyage.VoyageNumber;
 import se.citerus.dddsample.domain.model.voyage.VoyageRepository;
-import se.citerus.dddsample.infrastructure.persistence.inmemory.LocationRepositoryInMem;
-import se.citerus.dddsample.infrastructure.persistence.inmemory.VoyageRepositoryInMem;
 
 public class HandlingEventFactoryTest {
 
@@ -40,8 +38,8 @@ public class HandlingEventFactoryTest {
   public void setUp() {
 
     cargoRepository = mock(CargoRepository.class);
-    voyageRepository = new VoyageRepositoryInMem();
-    locationRepository = new LocationRepositoryInMem();
+    voyageRepository = mock(VoyageRepository.class);
+    locationRepository = mock(LocationRepository.class);
     factory = new HandlingEventFactory(cargoRepository, voyageRepository, locationRepository);
 
     trackingId = new TrackingId("ABC");
@@ -52,6 +50,8 @@ public class HandlingEventFactoryTest {
   @Test
   public void testCreateHandlingEventWithCarrierMovement() throws Exception {
     when(cargoRepository.find(trackingId)).thenReturn(cargo);
+    when(voyageRepository.find(CM001.voyageNumber())).thenReturn(CM001);
+    when(locationRepository.find(STOCKHOLM.unLocode())).thenReturn(STOCKHOLM);
 
     VoyageNumber voyageNumber = CM001.voyageNumber();
     UnLocode unLocode = STOCKHOLM.unLocode();
@@ -70,6 +70,8 @@ public class HandlingEventFactoryTest {
   @Test
   public void testCreateHandlingEventWithoutCarrierMovement() throws Exception {
     when(cargoRepository.find(trackingId)).thenReturn(cargo);
+    when(voyageRepository.find(null)).thenReturn(Voyage.NONE);
+    when(locationRepository.find(STOCKHOLM.unLocode())).thenReturn(STOCKHOLM);
 
     UnLocode unLocode = STOCKHOLM.unLocode();
     HandlingEvent handlingEvent = factory.createHandlingEvent(
@@ -87,8 +89,10 @@ public class HandlingEventFactoryTest {
   @Test
   public void testCreateHandlingEventUnknownLocation() throws Exception {
     when(cargoRepository.find(trackingId)).thenReturn(cargo);
+    when(voyageRepository.find(CM001.voyageNumber())).thenReturn(CM001);
 
     UnLocode invalid = new UnLocode("NOEXT");
+    when(locationRepository.find(invalid)).thenReturn(null);
     try {
       factory.createHandlingEvent(
         new Date(), new Date(100), trackingId, CM001.voyageNumber(), invalid, Type.LOAD

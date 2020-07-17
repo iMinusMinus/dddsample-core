@@ -11,5 +11,11 @@
 
     <artifactId>dddsample-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
