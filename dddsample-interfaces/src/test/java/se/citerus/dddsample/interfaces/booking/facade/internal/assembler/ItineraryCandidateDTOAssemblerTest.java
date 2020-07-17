@@ -24,8 +24,8 @@ import se.citerus.dddsample.domain.model.cargo.Leg;
 import se.citerus.dddsample.domain.model.location.Location;
 import se.citerus.dddsample.domain.model.location.LocationRepository;
 import se.citerus.dddsample.domain.model.location.UnLocode;
+import se.citerus.dddsample.domain.model.voyage.VoyageNumber;
 import se.citerus.dddsample.domain.model.voyage.VoyageRepository;
-import se.citerus.dddsample.infrastructure.persistence.inmemory.VoyageRepositoryInMem;
 import se.citerus.dddsample.interfaces.booking.facade.dto.LegDTO;
 import se.citerus.dddsample.interfaces.booking.facade.dto.RouteCandidateDTO;
 
@@ -72,7 +72,8 @@ public class ItineraryCandidateDTOAssemblerTest {
     when(locationRepository.find(new UnLocode("BBBBB"))).thenReturn(TOKYO);
     when(locationRepository.find(new UnLocode("CCCCC"))).thenReturn(CHICAGO);
 
-    final VoyageRepository voyageRepository = new VoyageRepositoryInMem();
+    final VoyageRepository voyageRepository = mock(VoyageRepository.class);
+    when(voyageRepository.find(new VoyageNumber("CM001"))).thenReturn(CM001);
 
 
     // Tested call

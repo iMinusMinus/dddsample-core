@@ -23,6 +23,7 @@ import static java.util.Arrays.asList;
 import static java.util.Objects.requireNonNull;
 import static se.citerus.dddsample.domain.model.location.SampleLocations.*;
 import static se.citerus.dddsample.domain.model.voyage.SampleVoyages.*;
+import static se.citerus.dddsample.domain.util.DateTestUtil.toDate;
 
 /**
  * Provides sample data.
